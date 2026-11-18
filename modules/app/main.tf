@@ -20,4 +20,4 @@ resource "aws_autoscaling_group" "app" {
     value               = "app"
     propagate_at_launch = true
   }
-}
+} 

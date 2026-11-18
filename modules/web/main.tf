@@ -13,7 +13,7 @@ resource "aws_autoscaling_group" "web" {
   vpc_zone_identifier  = var.subnets
   launch_template {
     id      = aws_launch_template.web.id
-    version = "$Latest"
+    version = "$Latest" 
   }
   tag {
     key                 = "Name"
@@ -24,7 +24,7 @@ resource "aws_autoscaling_group" "web" {
 
 resource "aws_lb" "web" {
   internal           = false
-  load_balancer_type = "application"
+  load_balancer_type = var.load_balancer_type
   subnets            = var.alb_subnets
   security_groups    = [var.alb_sg_id]
 }
@@ -53,6 +53,3 @@ resource "aws_autoscaling_attachment" "web_tg" {
   lb_target_group_arn   = aws_lb_target_group.web.arn
 }
 
-output "alb_dns" {
-  value = aws_lb.web.dns_name
-}

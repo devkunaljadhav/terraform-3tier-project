@@ -2,8 +2,21 @@ vpc_cidr        = "10.0.0.0/16"
 public_subnets  = ["10.0.1.0/24", "10.0.2.0/24"]
 private_subnets = ["10.0.11.0/24", "10.0.12.0/24"]
 azs             = ["ap-south-1a", "ap-south-1b"]
-web_ami_id      = "ami-0d0ad8bb301edb745"
-app_ami_id      = "ami-0d0ad8bb301edb745"
-db_username     = "admin"
-db_password     = "changeMeNow!"
-db_name         = "production"
+
+web_ami_id = "ami-0d0ad8bb301edb745"
+app_ami_id = "ami-0d0ad8bb301edb745"
+
+db_username = "admin"
+db_password = "ReplaceThisWithARealPassword!123"
+db_name     = "production"
+
+# RDS settings
+storage_type        = "gp2"
+engine              = "mysql"
+engine_version      = "8.0.43"
+skip_final_snapshot = true
+publicly_accessible = false
+deletion_protection = false
+
+# Web load balancer
+load_balancer_type = "application"
